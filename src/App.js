@@ -5,6 +5,7 @@ import allCountryScores from './allCountryScores';
 function App() {
 
   const [scores, setScores] = React.useState(allCountryScores);
+
   const [countryOrder, setCountryOrder] = React.useState("None");
   const [scoresOrder, setScoresOrder] = React.useState("Descending");
 
@@ -67,7 +68,6 @@ function App() {
           )
         })
       }   
-
     </div>
   );
 };
