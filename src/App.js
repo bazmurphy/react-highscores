@@ -23,14 +23,24 @@ function App() {
   // toggle to display Scores numerically descending or ascending
   const changeScoreOrder = () => {
     if (scoresOrder === "Descending") {
-      setScores(prevScores => prevScores.map(element => element.scores.sort((elementOne, elementTwo) => elementTwo.s - elementOne.s)));
+      // setScores(prevScores => prevScores.map(element => element.scores.sort((elementOne, elementTwo) => elementTwo.s - elementOne.s)));
         // Uncaught TypeError: element.scores is undefined
         // nested sort doesn't seem to work?
+      setScores(prevScores => prevScores.map(element => {
+        element.scores.sort((elementOne, elementTwo) => elementTwo.s - elementOne.s)
+        return element;
+      }));
+      // ^ THANK YOU Berkeli
       setScoresOrder("Ascending");
     } else if (scoresOrder === "Ascending") {
-      setScores((prevScores) => prevScores.map(element => element.scores.sort((elementOne, elementTwo) => elementOne.s - elementTwo.s)));
+      // setScores((prevScores) => prevScores.map(element => element.scores.sort((elementOne, elementTwo) => elementOne.s - elementTwo.s)));
         // Uncaught TypeError: element.scores is undefined
         // nested sort doesn't seem to work?
+      setScores(prevScores => prevScores.map(element => {
+        element.scores.sort((elementOne, elementTwo) => elementOne.s - elementTwo.s)
+        return element;
+      }));
+      // ^ THANK YOU Berkeli
       setScoresOrder("Descending");
     }
   };
