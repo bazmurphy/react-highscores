@@ -53,18 +53,12 @@ function App() {
 
       <header>High Scores per Country</header>
 
-      {scores
-        // .sort((elementOne, elementTwo) => elementOne.name.localeCompare(elementTwo.name))
-        // ^ this works when i do it before .map in the render here (but yes its chained not nested)
-        .map(element => {
+      {scores.map(element => {
           return (
             <div className="country-scores-container">
               <div className="country-scores-title">HIGH SCORES: {element.name}</div>
 
-              {element.scores
-                // .sort((elementOne, elementTwo) => elementOne.s - elementTwo.s)
-                // ^ this works when i do it before .map in the render here (but yes its chained not nested)
-                .map(element => {
+              {element.scores.map(element => {
                   return (
                     <div className="country-scores-row">
                       <span className="country-scores-name">{element.n}</span>
