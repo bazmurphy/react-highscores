@@ -5,7 +5,6 @@ import allCountryScores from './allCountryScores';
 function App() {
 
   const [scores, setScores] = React.useState(allCountryScores);
-
   const [countryOrder, setCountryOrder] = React.useState("None");
   const [scoresOrder, setScoresOrder] = React.useState("Descending");
 
@@ -23,16 +22,14 @@ function App() {
   // toggle to display Scores numerically descending or ascending
   const changeScoreOrder = () => {
     if (scoresOrder === "Descending") {
-      setScores(prevScores => {
-        return prevScores.map(element => element.scores.sort((elementOne, elementTwo) => elementTwo.s - elementOne.s));
-        // ERROR: App.js:55 Uncaught TypeError: Cannot read properties of undefined (reading 'map')
-      });
+      setScores(prevScores => prevScores.map(element => element.scores.sort((elementOne, elementTwo) => elementTwo.s - elementOne.s)));
+        // Uncaught TypeError: element.scores is undefined
+        // nested sort doesn't seem to work?
       setScoresOrder("Ascending");
     } else if (scoresOrder === "Ascending") {
-      setScores((prevScores) => {
-        return prevScores.map(element => element.scores.sort((elementOne, elementTwo) => elementOne.s - elementTwo.s));
-        // ERROR: App.js:55 Uncaught TypeError: Cannot read properties of undefined (reading 'map')
-      });
+      setScores((prevScores) => prevScores.map(element => element.scores.sort((elementOne, elementTwo) => elementOne.s - elementTwo.s)));
+        // Uncaught TypeError: element.scores is undefined
+        // nested sort doesn't seem to work?
       setScoresOrder("Descending");
     }
   };
@@ -47,7 +44,7 @@ function App() {
 
       {scores
         // .sort((elementOne, elementTwo) => elementOne.name.localeCompare(elementTwo.name))
-        // ^ this works when i do it before .map in the render here
+        // ^ this works when i do it before .map in the render here (but yes its chained not nested)
         .map(element => {
           return (
             <div className="country-scores-container">
@@ -55,7 +52,7 @@ function App() {
 
                 {element.scores
                       // .sort((elementOne, elementTwo) => elementOne.s - elementTwo.s)
-                      // ^ this works when i do it before .map in the render here
+                      // ^ this works when i do it before .map in the render here (but yes its chained not nested)
                       .map(element => {
                       return (
                         <div className="country-scores-row">

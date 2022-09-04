@@ -1,6 +1,8 @@
-@font-face {
+@font-face { 
   font-family: "Arcade";
   src: url("../public/arcade.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
 }
 
 body {
@@ -25,10 +27,17 @@ body {
 
 .change-country-order-button,
 .change-scores-order-button {
-  padding: 1rem;
-  border: 0.15rem solid red;
+  padding: 0.5rem;
+  border: 0.15rem solid black;
   font-family: 'Arcade';
-  font-size: 1rem;
+  font-size: 0.5rem;
+  background-color: hsl(0, 0%, 55%);
+  cursor: pointer;
+}
+
+.change-country-order-button:hover,
+.change-scores-order-button:hover {
+  background-color: hsl(0, 0%, 65%);
 }
 
 header {
