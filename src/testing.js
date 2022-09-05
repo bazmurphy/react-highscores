@@ -39,51 +39,46 @@ const changeCountryOrder = (array, order) => {
   }
 };
 
+// const changeScoreOrder = (array, order) => {
+//   if (order === "Descending") {
+//     return array.map(element => element.scores.sort((elementOne, elementTwo) => elementTwo.s - elementOne.s));
+//   } else if(order === "Ascending") {
+//     return array.map(element => element.scores.sort((elementOne, elementTwo) => elementOne.s - elementTwo.s));
+//   }
+// };
+
+// THAT WAS TOTALLY WRONG ^ the output was an array of arrays with no country name and no score key etc.
+
 const changeScoreOrder = (array, order) => {
   if (order === "Descending") {
-    return array.map(element => element.scores.sort((elementOne, elementTwo) => elementTwo.s - elementOne.s));
+    return array.map(element => 
+      element.scores.sort((elementOne, elementTwo) => { 
+        elementTwo.s - elementOne.s
+        return element;
+      }
+    ));
   } else if(order === "Ascending") {
-    return array.map(element => element.scores.sort((elementOne, elementTwo) => elementOne.s - elementTwo.s));
+    return array.map(element => 
+      element.scores.sort((elementOne, elementTwo) => {
+        elementOne.s - elementTwo.s
+        return element;
+      }
+    ));
   }
 };
 
-console.log("\n COUNTRIES ASCENDING")
+console.log("\n=====COUNTRIES ASCENDING=====")
 console.log(changeCountryOrder(allCountryScores, "Ascending"));
-console.log("\n COUNTRIES DESCENDING")
+console.log(allCountryScores);
+
+console.log("\n=====COUNTRIES DESCENDING=====")
 console.log(changeCountryOrder(allCountryScores, "Descending"));
-console.log("\n SCORES ASCENDING")
+console.log(allCountryScores);
+
+console.log("\n=====SCORES ASCENDING=====")
 console.log(changeScoreOrder(allCountryScores, "Ascending"));
-console.log("\n SCORES DESCENDING")
+console.log(allCountryScores);
+
+console.log("\n=====SCORES DESCENDING=====")
 console.log(changeScoreOrder(allCountryScores, "Descending"));
-
-
-
-
-
-// array.sort((a, b) => {
-//     if (a.name === b.name) return 0;
-//     return a.name > b.name ? 1 : -1;
-//   });
-
-// const allCountryScoresSortedAlphabetically = allCountryScores.sort((a,b) => {
-//     return a.name.toLowerCase() === b.name.toLowerCase() ? 
-//                 0 : a.name.toLowerCase() > b.name.toLowerCase() ? 
-//                     1 : -1;
-// });
-
-// const result1 = allCountryScores.sort((a, b) => a.name.localeCompare(b.name));
-// console.log(result1);
-
-// IN REACT IT WILL BE NESTED:
-
-// const test = allCountryScores.map(element => {
-    
-//     element.scores.map(element => {
-
-//     })
-
-// });
-
-// const test2 = { scores: [ {n: "rahman", s: 700200}, {n: "rayhan", s: 18238123}, {n: "ali", s: 5400000} ] }
-// const result2 = test2.scores.sort((elementOne,elementTwo) => elementTwo.s - elementOne.s)
-// console.log(result2);
+console.log(allCountryScores);
